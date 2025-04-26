@@ -1,30 +1,36 @@
 # Holistic Energy Tracker
 
-A lightweight self-tracking app designed for personal energy and mood monitoring.
+A lightweight self-tracking app designed for personal energy, mood, and habit monitoring.
 
 ## Key Features
 - User registration (name, age, biological gender)
-- Dynamic theme switching (light/dark mode)
-- Custom toggle with white SVG icons (sun/moon)
-- Architecture focused on scalability and modularity
+- Dynamic theme switching (light/dark mode) using a custom toggle with white SVG icons (sun/moon)
+- Front-end architecture with separated modules (theme toggle, form validation, storage)
+- Form validation using Just-validate library via ES modules import
 - TailwindCSS setup with explicit `darkMode: 'class'` configuration
 
 ## Architecture Highlights
-- Separation of responsibilities: theme toggle, user registration, and future tracking modules are logically separated
-- Flexible data structure allowing easy extension (e.g., energy logs, cycle tracking, sleep tracking)
-- Minimal, scalable approach suitable for future API integration or local storage management
-- Clear use of Tailwind utility classes for maintainable styling without heavy custom CSS
+- Modular structure:
+  - `main.js` — main entry point
+  - `themeToggle.js` — handles light/dark mode switching
+  - `validateRegistration.js` — manages form validation and registration logic
+  - `storage.js` — handles saving and retrieving user data from LocalStorage
+- Separation of concerns for easier maintenance and scalability
+- Flexible data model prepared for future features (energy tracking, cycle tracking, analytics)
+- Modern import/export module structure without external bundlers
 
 ## Technologies
 - HTML5
 - TailwindCSS (via CDN)
-- Vanilla JavaScript (no external libraries)
+- Vanilla JavaScript (ES modules)
+- Just-validate (imported via CDN)
 
 ## Future Development
-- Save user's theme preference in LocalStorage
-- Add daily energy, mood, and comment tracking
-- Visualize weekly statistics with charts
+- Save theme preference to LocalStorage for persistence
+- Add daily tracking of energy, mood, sleep, and other wellness factors
+- Visualize data with charts (e.g., Chart.js)
+- Build dashboard and statistics page
 
 ---
 
-*Created with ❤️ to practice not just coding, but scalable front-end architecture.*
+*Created with ❤️ to practice scalable front-end architecture and enhance real-world development skills.*

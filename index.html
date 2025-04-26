@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holistic Energy Tracker - Реєстрація</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-full max-w-md">
+
+        <!-- Перемикач теми -->
+        <div class="flex justify-end mb-4">
+            <button id="toggle-theme" class="text-2xl text-yellow-500 dark:text-blue-300 transition">
+                🌙
+            </button>
+        </div>
+
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
+            Реєстрація
+        </h1>
+
+        <form id="registration-form" class="flex flex-col gap-4">
+
+            <div>
+                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-1">Ім'я:</label>
+                <input type="text" id="name" name="name" required
+                    class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 dark:bg-gray-700 dark:text-white">
+            </div>
+
+            <div>
+                <label for="age" class="block text-gray-700 dark:text-gray-300 mb-1">Вік:</label>
+                <input type="number" id="age" name="age" min="10" max="100" required
+                    class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 dark:bg-gray-700 dark:text-white">
+            </div>
+
+            <div>
+                <label for="gender" class="block text-gray-700 dark:text-gray-300 mb-1">Стать:</label>
+                <select id="gender" name="gender" required
+                    class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 dark:bg-gray-700 dark:text-white">
+                    <option value="">-- Вибрати --</option>
+                    <option value="female">Жіноча</option>
+                    <option value="male">Чоловіча</option>
+                </select>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-md transition">
+                Зареєструватися
+            </button>
+
+        </form>
+    </div>
+
+    <!-- Скрипт перемикання теми -->
+    <script>
+        const toggleThemeButton = document.querySelector('#toggle-theme');
+
+        toggleThemeButton.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+
+            if (document.documentElement.classList.contains('dark')) {
+                toggleThemeButton.textContent = '🌞';
+            } else {
+                toggleThemeButton.textContent = '🌙';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

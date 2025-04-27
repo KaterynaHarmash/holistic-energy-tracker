@@ -8,7 +8,7 @@ export async function getUserProfile() {
 }
 
 export function updateUserProfile(updates) {
-  const data = JSON.parse(localStorage.getItem('userProfile')) || {};
+  const data = JSON.parse(localStorage.getItem("userProfile"))||{};
 
   // Перевірка чи updates — це об'єкт
   if (typeof updates !== 'object' || updates === null) {
@@ -23,4 +23,12 @@ export function updateUserProfile(updates) {
   localStorage.setItem('userProfile', JSON.stringify(data));
 
   return data; // Повертаємо оновлений обʼєкт
+}
+
+export function addEnergyLog(record) {
+  const user = JSON.parse(localStorage.getItem("userProfile"))||{};
+  console.log(record, user)
+  user.energyLogs.push(record)
+  updateUserProfile(user);
+  return user;
 }

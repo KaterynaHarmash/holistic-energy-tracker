@@ -33,7 +33,7 @@ export function setupRegistrationValidation() {
 
       saveUserProfile(userProfile);
 
-      alert('Registration successful!');
       document.querySelector('#registration-form').reset();
+      window.location.href = 'myProfile.html';
     });
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<body>
+    <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex justify-center p-4 items-start">
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex items-center justify-between max-w-7xl w-full">
+
+                <div class="flex items-center gap-4">
+                  <span class="font-semibold text-gray-800 dark:text-white">Cashflow</span>
+                  
+                  <div class="flex gap-2 text-sm">
+                    <button class="text-indigo-600 font-semibold">Last 7 days</button>
+                    <button class="text-gray-500 hover:text-indigo-600">Last 30 days</button>
+                    <button class="text-gray-500 hover:text-indigo-600">All-time</button>
+                  </div>
+                </div>
+              
+                <button class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow">
+                  <span>+</span>
+                  <span>New Invoice</span>
+                </button>
+              
+    </div>
+    </body>
+</body>
+</html>

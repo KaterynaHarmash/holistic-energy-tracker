@@ -1,5 +1,5 @@
 import JustValidate from 'https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.es.js';
-import { addEnergyLog, saveUserProfile } from './storage.js';
+import { addEnergyLog, getUserProfile, saveUserProfile } from './storage.js';
 
 export function setupRegistrationValidation() {
   const validation = new JustValidate('#registration-form');
@@ -24,12 +24,14 @@ export function setupRegistrationValidation() {
       const name = document.querySelector('#name').value.trim();
       const age = document.querySelector('#age').value.trim();
       const gender = document.querySelector('#gender').value;
+      const theme = getUserProfile();
 
       const userProfile = {
         name,
         age: Number(age),
         gender,
         energyLogs:[],
+        "dark theme": theme
       };
 
       saveUserProfile(userProfile);

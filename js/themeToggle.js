@@ -7,7 +7,8 @@ const moon = document.querySelector("#moon");
 themeToggle.addEventListener("change", () => {
   const userProfile = getUserProfile();
   if (userProfile) {
-    updateUserProfile({ "dark theme": themeToggle.checked });
+    userProfile["dark theme"]=themeToggle.checked;
+    updateUserProfile(userProfile);
   }
 
   if (themeToggle.checked) {

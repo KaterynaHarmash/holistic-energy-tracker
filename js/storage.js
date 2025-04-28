@@ -3,37 +3,36 @@ export function saveUserProfile(profile) {
 }
 
 export async function getUserProfile() {
-  const data = JSON.parse(localStorage.getItem("userProfile"))||{};
+  const data = JSON.parse(await localStorage.getItem("userProfile"))||{};
   return data;
 }
 
-export function updateUserProfile(updates) {
-  const data = getUserProfile();
+export async function updateUserProfile(updates) {
+  const data =  await getUserProfile(); // 1. Отримуємо актуальний профіль
+  console.log(data)
 
-  // Перевірка чи updates — це об'єкт
   if (typeof updates !== 'object' || updates === null) {
     console.error('Updates must be a non-null object.');
-    return existingProfile; // Повертаємо поточний об'єкт без змін
+    return data;
   }
 
-  // Об'єднуємо існуючі дані з новими оновленнями
-  Object.assign(data, updates);
+  const updatedProfile = { ...data, ...updates }; // 2. Об'єднуємо
 
-  // Зберігаємо оновлений об'єкт назад у LocalStorage
-  localStorage.setItem('userProfile', JSON.stringify(data));
+  localStorage.setItem('userProfile', JSON.stringify(updatedProfile)); // 3. Зберігаємо повний профіль
 
-  return data; // Повертаємо оновлений обʼєкт
+  return updatedProfile;
 }
 
-export function addEnergyLog(record) {
-  const user = getUserProfile();
+
+export async function addEnergyLog(record) {
+  const user = await getUserProfile();
   console.log(record, user)
   user.energyLogs.push(record)
-  updateUserProfile(user);
+  await updateUserProfile(user);
   return user;
 }
 
-export function getEnergyLogs(period) {
+export async function getEnergyLogs(period) {
   let dateStart = null;
   let dateFinish = new Date(); // Сьогодні
   
@@ -51,7 +50,7 @@ export function getEnergyLogs(period) {
       break;
   }
 
-  const records = getUserProfile().energyLogs||[];
+  const records = await getUserProfile().energyLogs||[];
   const filteredRecords = records.filter(rec=>Date.parse(rec.timestamp).getTime()>dateStart.getTime()&&ate.parse(rec.timestamp).getTime()<dateFinish.getTime());
 
 

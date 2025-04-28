@@ -2,160 +2,188 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My profile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
 </head>
 
-<body>
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex-column justify-center items-center p-4 items-start">
 
-    <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex justify-center p-4 items-start">
+  <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex items-center justify-between w-full mb-4">
 
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex items-center justify-between max-w-7xl w-full">
+    <div class="flex items-center gap-4">
+      <span class="font-semibold text-gray-800 dark:text-white" id="userName">User Name</span>
 
-            <div class="flex items-center gap-4">
-                <span class="font-semibold text-gray-800 dark:text-white" id="userName">User Name</span>
+      <div class="flex gap-2 text-sm">
+        <button class="text-indigo-600 font-semibold">Last 7 days</button>
+        <button class="text-gray-500 hover:text-indigo-600">Last 30 days</button>
+        <button class="text-gray-500 hover:text-indigo-600">All-time</button>
+      </div>
+    </div>
 
-                <div class="flex gap-2 text-sm">
-                    <button class="text-indigo-600 font-semibold">Last 7 days</button>
-                    <button class="text-gray-500 hover:text-indigo-600">Last 30 days</button>
-                    <button class="text-gray-500 hover:text-indigo-600">All-time</button>
-                </div>
-            </div>
+    <div class="flex justify-end">
+      <label for="theme-toggle" class="inline-flex items-center cursor-pointer relative">
+        <input type="checkbox" id="theme-toggle" class="sr-only peer">
 
-            <div class="flex justify-end">
-                <label for="theme-toggle" class="inline-flex items-center cursor-pointer relative">
-                    <input type="checkbox" id="theme-toggle" class="sr-only peer">
+        <!-- Тло тоглу -->
+        <div class="w-16 h-8 bg-gray-300 rounded-full peer-checked:bg-green-500 dark:bg-gray-700 transition">
+          <!-- Іконки -->
+          <div class="absolute top-1 left-1 w-14 h-6 flex items-center justify-between px-2 pointer-events-none">
 
-                    <!-- Тло тоглу -->
-                    <div
-                        class="w-16 h-8 bg-gray-300 rounded-full peer-checked:bg-green-500 dark:bg-gray-700 transition">
-                        <!-- Іконки -->
-                        <div
-                            class="absolute top-1 left-1 w-14 h-6 flex items-center justify-between px-2 pointer-events-none">
+            <!-- Сонце (біле) -->
+            <svg id="sun" class="w-5 h-5 text-white opacity-0 transition" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+            </svg>
 
-                            <!-- Сонце (біле) -->
-                            <svg id="sun" class="w-5 h-5 text-white opacity-0 transition"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                            </svg>
+            <!-- Місяць (білий) -->
+            <svg id="moon" class="w-5 h-5 text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+            </svg>
+          </div>
+        </div>
 
-                            <!-- Місяць (білий) -->
-                            <svg id="moon" class="w-5 h-5 text-white transition" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-                            </svg>
-                        </div>
+
+
+        <!-- Кружечок тоглу -->
+        <div class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition peer-checked:translate-x-8">
+        </div>
+      </label>
+    </div>
+
+    <button id="openModal"
+      class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow">
+      <span>+</span>
+      <span>New Log</span>
+    </button>
+    <div id="modal" class="absolute z-10 opacity-0 transition-all hidden" aria-labelledby="modal-title" role="dialog"
+      aria-modal="true">
+      <!-- Бекдроп -->
+      <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+      <!-- Контейнер модалки -->
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div id="backdrop" class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+          <!-- Модальне вікно -->
+          <div
+            class="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+
+            <form id="addEnergyLvl-form" class="bg-white dark:bg-gray-800 p-6 sm:p-8">
+
+              <div class="space-y-6">
+
+                <!-- Mood -->
+                <div>
+                  <label for="mood" class="block text-sm font-medium text-gray-900 dark:text-gray-200 mb-2">
+                    What is your mood right now?
+                  </label>
+                  <div class="relative">
+                    <select id="mood" name="mood"
+                      class="w-full appearance-none rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-base text-gray-900 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm">
+                      <option value="" disabled selected hidden>Choose your mood</option>
+                      <option>😁</option>
+                      <option>😒</option>
+                      <option>😭</option>
+                      <option>🫠</option>
+                      <option>🥰</option>
+                      <option>🤬</option>
+                      <option>😱</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                      <svg
+                        class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-700 dark:text-gray-100 sm:size-4"
+                        viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                        <path fill-rule="evenodd"
+                          d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                          clip-rule="evenodd" />
+                      </svg>
+
                     </div>
-
-
-
-                    <!-- Кружечок тоглу -->
-                    <div
-                        class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition peer-checked:translate-x-8">
-                    </div>
-                </label>
-            </div>
-
-            <button id="openModal"
-                class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow">
-                <span>+</span>
-                <span>New Log</span>
-            </button>
-            <div id="modal" class="absolute z-10 opacity-0 transition-all hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <!-- Бекдроп -->
-                <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
-              
-                <!-- Контейнер модалки -->
-                <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                  <div id="backdrop" class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    
-                    <!-- Модальне вікно -->
-                    <div class="relative transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                      
-                      <form id="addEnergyLvl-form" class="bg-white dark:bg-gray-800 p-6 sm:p-8">
-                        
-                        <div class="space-y-6">
-                          
-                          <!-- Mood -->
-                          <div>
-                            <label for="mood" class="block text-sm font-medium text-gray-900 dark:text-gray-200 mb-2">
-                              What is your mood right now?
-                            </label>
-                            <div class="relative">
-                              <select id="mood" name="mood" class="w-full appearance-none rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-base text-gray-900 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm">
-                                <option value="" disabled selected hidden>Choose your mood</option>
-                                <option>😁</option>
-                                <option>😒</option>
-                                <option>😭</option>
-                                <option>🫠</option>
-                                <option>🥰</option>
-                                <option>🤬</option>
-                                <option>😱</option>
-                              </select>
-                              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-700 dark:text-gray-100 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                                  </svg>
-                                
-                              </div>
-                            </div>
-                          </div>
-              
-                          <!-- Energy Level -->
-                          <div>
-                            <label for="energyLevel" class="block text-sm font-medium text-gray-900 dark:text-gray-200 mb-2">
-                              Evaluate your energy level right now
-                            </label>
-                            <input type="number" name="energyLevel" id="energyLevel" autocomplete="off" min="0" max="10"
-                              class="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 text-base text-gray-900 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm">
-                          </div>
-              
-                          <!-- Notes -->
-                          <div>
-                            <label for="about" class="block text-sm font-medium text-gray-900 dark:text-gray-200 mb-2">
-                              Your notes
-                            </label>
-                            <textarea id="about" name="about" rows="3" 
-                              class="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 text-base text-gray-900 dark:bg-gray-700 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm"></textarea>
-                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                              Write a few sentences about how you feel now.
-                            </p>
-                          </div>
-                        </div>
-              
-                        <!-- Кнопки -->
-                        <div class="mt-6 flex justify-end gap-4">
-                          <button type="submit"
-                            class="inline-flex justify-center rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 text-sm shadow-sm">
-                            Save Log
-                          </button>
-                          <button id="closeModal" type="button"
-                            class="inline-flex justify-center rounded-md bg-white hover:bg-gray-50 text-gray-900 font-semibold px-4 py-2 text-sm shadow-sm ring-1 ring-gray-300">
-                            Cancel
-                          </button>
-                        </div>
-              
-                      </form>
-              
-                    </div>
-              
                   </div>
                 </div>
+
+                <!-- Energy Level -->
+                <div>
+                  <label for="energyLevel" class="block text-sm font-medium text-gray-900 dark:text-gray-200 mb-2">
+                    Evaluate your energy level right now
+                  </label>
+                  <input type="number" name="energyLevel" id="energyLevel" autocomplete="off" min="0" max="10"
+                    class="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 text-base text-gray-900 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm">
+                </div>
+
+                <!-- Notes -->
+                <div>
+                  <label for="about" class="block text-sm font-medium text-gray-900 dark:text-gray-200 mb-2">
+                    Your notes
+                  </label>
+                  <textarea id="about" name="about" rows="3"
+                    class="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 text-base text-gray-900 dark:bg-gray-700 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm"></textarea>
+                  <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    Write a few sentences about how you feel now.
+                  </p>
+                </div>
               </div>
-              
+
+              <!-- Кнопки -->
+              <div class="mt-6 flex justify-end gap-4">
+                <button type="submit"
+                  class="inline-flex justify-center rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 text-sm shadow-sm">
+                  Save Log
+                </button>
+                <button id="closeModal" type="button"
+                  class="inline-flex justify-center rounded-md bg-white hover:bg-gray-50 text-gray-900 font-semibold px-4 py-2 text-sm shadow-sm ring-1 ring-gray-300">
+                  Cancel
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+
         </div>
-        <script src="./js/myProfile.js" type="module"></script>
-    </body>
+      </div>
+    </div>
+
+  
+  </div>
+
+  <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Your recent records:</h2>
+      </div>
+    </div>
+  
+    <div class="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow">
+      <table class="w-full text-sm text-left text-gray-700 dark:text-gray-200">
+        <thead class="text-xs uppercase bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+          <tr>
+            <th scope="col" class="px-6 py-4">Date</th>
+            <th scope="col" class="px-6 py-4">Energy lvl</th>
+            <th scope="col" class="px-6 py-4">Mood</th>
+            <th scope="col" class="px-6 py-4">Comment</th>
+            <th scope="col" class="px-6 py-4"></th>
+          </tr>
+        </thead>
+        <tbody id="recordsDashboard">
+          
+          <!-- Додай інші рядки тут -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script src="./js/myProfile.js" type="module"></script>
 </body>
 
 </html>

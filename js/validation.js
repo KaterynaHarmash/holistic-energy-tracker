@@ -58,6 +58,7 @@ export function setupAddEnergyLvlValidation() {
       const timestamp = new Date().toJSON();
 
       const energyLevel = {
+        id: Date.now(),
         timestamp,
         mood,
         energyLvl: Number(lvl),

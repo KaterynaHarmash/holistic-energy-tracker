@@ -45,7 +45,7 @@ holistic-energy-tracker/
 - Visualize data trends with charts (e.g., using Chart.js)
 - Implement filtering of records by date range
 - Expand tracking to additional factors (sleep, menstrual cycle, nutrition)
-- Improve responsive layout and animations for even better UX
+- Improve responsive layout and animations for even better UX                                                                                                                   
 
 ---
 

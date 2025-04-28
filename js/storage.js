@@ -3,12 +3,12 @@ export function saveUserProfile(profile) {
 }
 
 export async function getUserProfile() {
-  const data = localStorage.getItem("userProfile");
-  return data ? JSON.parse(data) : null;
+  const data = JSON.parse(localStorage.getItem("userProfile"))||{};
+  return data;
 }
 
 export function updateUserProfile(updates) {
-  const data = JSON.parse(localStorage.getItem("userProfile"))||{};
+  const data = getUserProfile();
 
   // Перевірка чи updates — це об'єкт
   if (typeof updates !== 'object' || updates === null) {
@@ -26,9 +26,34 @@ export function updateUserProfile(updates) {
 }
 
 export function addEnergyLog(record) {
-  const user = JSON.parse(localStorage.getItem("userProfile"))||{};
+  const user = getUserProfile();
   console.log(record, user)
   user.energyLogs.push(record)
   updateUserProfile(user);
   return user;
+}
+
+export function getEnergyLogs(period) {
+  let dateStart = null;
+  let dateFinish = new Date(); // Сьогодні
+  
+  switch (period) {
+    case "Last 30 days":
+      dateStart = new Date();
+      dateStart.setDate(dateStart.getDate() - 30);
+      break;
+    case "Last 7 days":
+      dateStart = new Date();
+      dateStart.setDate(dateStart.getDate() - 7);
+      break;
+    default:
+      dateStart = new Date(0);
+      break;
+  }
+
+  const records = getUserProfile().energyLogs||[];
+  const filteredRecords = records.filter(rec=>Date.parse(rec.timestamp).getTime()>dateStart.getTime()&&ate.parse(rec.timestamp).getTime()<dateFinish.getTime());
+
+
+  return filteredRecords;
 }

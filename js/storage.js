@@ -59,10 +59,8 @@ export async function getEnergyLogs(period) {
 }
 
 export function renderRecordsLists(records){
-  console.log(records)
   const tableBodyEl = document.querySelector("#recordsDashboard");
   const tableListMarkup = records.map(({id, timestamp, mood, energyLvl, comment}) => {
-    console.log(timestamp, mood, energyLvl, comment)
     const date = new Date(timestamp).toLocaleDateString('uk-UA',{
       year: "numeric",
       month: "long",

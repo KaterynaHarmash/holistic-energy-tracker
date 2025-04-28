@@ -16,6 +16,5 @@ if (userProfile["dark theme"]) {
 setupAddEnergyLvlValidation();
 
 const energyLogs = await getEnergyLogs();
-console.log("logs",energyLogs)
 
 renderRecordsLists(energyLogs);

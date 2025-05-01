@@ -1,6 +1,7 @@
 import JustValidate from 'https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.es.js';
 import { addEnergyLog, getUserProfile, saveUserProfile } from './storage.js';
 
+
 export function setupRegistrationValidation() {
   const validation = new JustValidate('#registration-form');
 
@@ -51,7 +52,7 @@ export function setupAddEnergyLvlValidation() {
       { rule: 'maxNumber', value: 10, errorMessage: 'Maximum energy level is 10' },
     ])
 
-    .onSuccess((event) => {
+    .onSuccess(async (event) => {
       event.preventDefault();
 
       const mood = document.querySelector('#mood').value;
@@ -67,7 +68,7 @@ export function setupAddEnergyLvlValidation() {
         comment: about
       };
 
-      addEnergyLog(energyLevel);
+      await addEnergyLog(energyLevel);
 
       const modal = document.querySelector("#modal");
       modal.classList.add("opacity-0");

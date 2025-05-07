@@ -16,7 +16,10 @@ if (userProfile["dark theme"]) {
 
 setupAddEnergyLvlValidation();
 
+// const energyLogs = await getEnergyLogs();generateTestData();
 const energyLogs = await getEnergyLogs();
+
+const logsFilter = document.querySelector("#filter");
 
 renderRecordsLists(energyLogs);
 
@@ -38,8 +41,7 @@ export function renderRecordsLists(records){
             </td>
           </tr>`
     })||[];
-    tableBodyEl.innerHTML='';
-    tableBodyEl.insertAdjacentHTML('beforeend', tableListMarkup.join(''));
+    tableBodyEl.innerHTML = tableListMarkup.join('');
   
 }
 
@@ -47,5 +49,14 @@ export function renderRecordsLists(records){
 tableBodyEl.addEventListener('click',async (e)=>{
   if(e.target.className.includes("deleteEnergyLogBtn")){
     await deleteEnergyLog(e.target.dataset.id)
+  }
+})
+logsFilter.addEventListener('click',async (e)=>{
+  if(e.target.dataset.action.includes('filter')){
+    const lastACtiveBtn = document.querySelector('#filter button[data-active="true"]');
+    lastACtiveBtn.dataset.active = "false";
+    e.target.dataset.active = "true";
+    const filteredEnergyLogs = await getEnergyLogs(e.target.dataset.action);
+    return renderRecordsLists(filteredEnergyLogs);
   }
 })

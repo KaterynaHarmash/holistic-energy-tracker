@@ -50,11 +50,11 @@ export async function getEnergyLogs(period) {
   let dateFinish = new Date(); // Сьогодні
 
   switch (period) {
-    case "Last 30 days":
+    case "filter-30days":
       dateStart = new Date();
       dateStart.setDate(dateStart.getDate() - 30);
       break;
-    case "Last 7 days":
+    case "filter-7days":
       dateStart = new Date();
       dateStart.setDate(dateStart.getDate() - 7);
       break;
@@ -64,12 +64,10 @@ export async function getEnergyLogs(period) {
   }
 
   const user = await getUserProfile();
+  
   const filteredRecords =
-    user.energyLogs ||
-    [].filter(
-      (rec) =>
-        Date.parse(rec.timestamp).getTime() > dateStart.getTime() &&
-        ate.parse(rec.timestamp).getTime() < dateFinish.getTime()
+    user.energyLogs.filter(
+      (rec) =>Date.parse(rec.timestamp) > dateStart.getTime()&&Date.parse(rec.timestamp) < dateFinish.getTime()
     );
 
   return filteredRecords;

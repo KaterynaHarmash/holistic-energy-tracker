@@ -1,5 +1,5 @@
 import JustValidate from 'https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.es.js';
-import { addEnergyLog, getUserProfile, saveUserProfile } from './storage.js';
+import { addEnergyLog, getUserProfile, saveUserProfile } from './core/storage.js';
 
 
 export function setupRegistrationValidation() {

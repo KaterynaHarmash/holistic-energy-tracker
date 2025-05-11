@@ -1,4 +1,4 @@
-import { getUserProfile, updateUserProfile } from "./storage.js";
+import { getUserProfile, updateUserProfile } from "../core/storage.js";
 
 const themeToggle = document.querySelector("#theme-toggle");
 const sun = document.querySelector("#sun");

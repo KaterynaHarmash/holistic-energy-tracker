@@ -1,4 +1,4 @@
-import { renderRecordsLists } from "./myProfile.js";
+import { renderRecordsLists } from "../components/tableRender.js";
 
 export function saveUserProfile(profile) {
   localStorage.setItem("userProfile", JSON.stringify(profile));

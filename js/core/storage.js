@@ -1,5 +1,3 @@
-import { renderRecordsLists } from "../components/tableRender.js";
-
 export function saveUserProfile(profile) {
   localStorage.setItem("userProfile", JSON.stringify(profile));
 }
@@ -10,17 +8,16 @@ export async function getUserProfile() {
 }
 
 export async function updateUserProfile(updates) {
-  const data = await getUserProfile(); // 1. Отримуємо актуальний профіль
-  console.log(data);
+  const data = await getUserProfile(); 
 
   if (typeof updates !== "object" || updates === null) {
     console.error("Updates must be a non-null object.");
     return data;
   }
 
-  const updatedProfile = { ...data, ...updates }; // 2. Об'єднуємо
+  const updatedProfile = { ...data, ...updates }; 
 
-  localStorage.setItem("userProfile", JSON.stringify(updatedProfile)); // 3. Зберігаємо повний профіль
+  localStorage.setItem("userProfile", JSON.stringify(updatedProfile)); 
 
   return updatedProfile;
 }
@@ -31,8 +28,7 @@ export async function addEnergyLog(record) {
   await updateUserProfile(user);
   const energyLogs = await getEnergyLogs();
 
-  renderRecordsLists(energyLogs);
-  return user;
+  return energyLogs;
 }
 
 export async function deleteEnergyLog(recordID) {
@@ -41,8 +37,7 @@ export async function deleteEnergyLog(recordID) {
   await updateUserProfile(user);
   const energyLogs = await getEnergyLogs();
 
-  renderRecordsLists(energyLogs);
-  return user;
+  return energyLogs;
 }
 
 export async function getEnergyLogs(period) {

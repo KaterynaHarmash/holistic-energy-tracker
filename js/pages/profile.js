@@ -18,7 +18,6 @@ if (userProfile["dark theme"]) {
 
 setupAddEnergyLvlValidation();
 
-// const energyLogs = await getEnergyLogs();generateTestData();
 const energyLogs = await getEnergyLogs();
 
 const logsFilter = document.querySelector("#filter");
@@ -26,10 +25,10 @@ const logsFilter = document.querySelector("#filter");
 renderRecordsLists(energyLogs);
 const chart = renderChart(energyLogs);
 
-// const deleteBtn = document.querySelector('.deleteEnergyLogBtn');
 tableBodyEl.addEventListener('click',async (e)=>{
   if(e.target.className.includes("deleteEnergyLogBtn")){
-    await deleteEnergyLog(e.target.dataset.id)
+    const cleansedEnergyLogs = await deleteEnergyLog(e.target.dataset.id);
+    renderRecordsLists(cleansedEnergyLogs);
   }
 })
 logsFilter.addEventListener('click',async (e)=>{

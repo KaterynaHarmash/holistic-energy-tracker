@@ -1,5 +1,6 @@
 import JustValidate from 'https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.es.js';
 import { addEnergyLog, getUserProfile, saveUserProfile } from './core/storage.js';
+import { renderRecordsLists } from './components/tableRender.js';
 
 
 export function setupRegistrationValidation() {
@@ -68,7 +69,8 @@ export function setupAddEnergyLvlValidation() {
         comment: about
       };
 
-      await addEnergyLog(energyLevel);
+      const updatedEnergyLogs = await addEnergyLog(energyLevel);
+      renderRecordsLists(updatedEnergyLogs);
 
       const modal = document.querySelector("#modal");
       modal.classList.add("opacity-0");
